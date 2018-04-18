@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user_app/style.css' %}">
+    <title>Users App</title>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <h1>Add an new user</h1>
+    <form action='create' method="post">
+        {% csrf_token %}
+        First Name:<input type='text' name='first_name'>
+        Last Name:<input type='text' name='last_name'>
+        Email:<input type='text' name='email'>
+        <input type='Submit' value='Create'>
+    </form>
+
+    <a href="/users">Go Back</a>
+</body>
+</html>
